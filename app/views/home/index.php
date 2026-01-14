@@ -1,2 +1,9 @@
-<h1>Home page</h1>
-<p>Bienvenue <?= $username ?? '' ?></p>
+<?php use app\Core\View; ?>
+
+<h2><?= $title ?></h2>
+
+<ul>
+    <?php foreach ($users as $user): ?>
+        <li><?= View::e($user['email']) ?></li>
+    <?php endforeach; ?>
+</ul>
