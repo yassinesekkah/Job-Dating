@@ -30,4 +30,21 @@ class HomeController extends Controller
 
         $this->redirect('/');
     }
+
+    public function update()
+    {
+        User::update((int) $_POST['id'], [
+            'email' => $_POST['email'],
+            'password' => $_POST['password']
+        ]);
+
+        $this->redirect('/');
+    }
+
+    public function delete()
+    {
+        User::delete((int) $_POST['id']);
+
+        $this->redirect('/');
+    }
 }

@@ -4,8 +4,32 @@
 
 <ul>
     <?php foreach ($users as $user): ?>
-        <li><?= View::e($user['email']) ?></li>
-    <?php endforeach; ?>
+    <li>
+        <?= View::e($user['email']) ?>
+
+        <!-- Update form -->
+        <form method="post" action="/users/update" style="display:inline">
+            <input type="hidden" name="id" value="<?= $user['id'] ?>">
+            
+
+            <input type="email" name="email"
+                   value="<?= View::e($user['email']) ?>" required>
+
+            <input type="password" name="password"
+                   placeholder="New password" required>
+
+            <button type="submit">Update</button>
+        </form>
+
+        <!-- Delete form -->
+        <form method="post" action="/users/delete" style="display:inline">
+            <input type="hidden" name="id" value="<?= $user['id'] ?>">
+            
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+<?php endforeach; ?>
+
 
     <?php if(!empty($userFound)): ?>
 
